@@ -1,0 +1,43 @@
+
+/**
+Gets input from user, makes call to server and updates DOM based on level of 
+offensivebess in text input by user as returned from server.
+**/
+function detect_offense() {
+
+  // gets input from user
+  var classifier = $('#classifiername').find(":selected").text();
+  var text = $('#search').val();
+
+  if (text.length < 1){
+    alert ("Empty text. Please enter text for violence detection");
+    return
+  }
+
+  // makes request to server and updates dom
+  $.post('/detect', {
+      text: text,
+      model: classifier,
+  }).done(function(response) {
+      var level = response['level']
+
+      if (level == "0"){
+        var markup = "<tr><td><strong> <font color = 'blue'>" + text + "</td><td> </font> <font color = 'blue'> <strong> No Violence </font> </strong> </td></tr>";
+        $("table tbody").append(markup);
+      }
+
+      else if (level == "-1"){
+        var markup = "<tr><td><strong> <font color = 'orange'>" + text + "</td><td> </font> <font color = 'orange'> <strong> Offensive </font> </strong> </td></tr>";
+        $("table tbody").append(markup);
+      }
+
+      else {
+        var markup = "<tr><td> <strong><font color = 'red'>" + text + "</td><td> </font> <font color = 'red'> <strong> Obscene </font> </strong></td></tr>";
+        $("table tbody").append(markup);
+      }
+
+  }).fail(function() {
+      alert("Could not contact server");
+  });
+  
+} 
