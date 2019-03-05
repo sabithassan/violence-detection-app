@@ -26,11 +26,14 @@ def load_models(model_file):
 
 
 # loads all models
-MNB_unigram_model, unigram_vectorizer = load_models ("./app/static/models/MNB_model_word_1-gram.pckl")
-MNB_bigram_model, bigram_vectorizer = load_models ("./app/static/models/MNB_model_word_2-gram.pckl")
+MNB_word_unigram_model, word_unigram_vectorizer = load_models ("./app/static/models/MNB_model_word_1-gram.pckl")
+MNB_word_bigram_model, word_bigram_vectorizer = load_models ("./app/static/models/MNB_model_word_2-gram.pckl")
 
-SVM_unigram_model, _ = load_models ("./app/static/models/SVM_model_word_1-gram.pckl")
-SVM_bigram_model, _ = load_models ("./app/static/models/SVM_model_word_2-gram.pckl")
+SVM_word_unigram_model, _ = load_models ("./app/static/models/SVM_model_word_1-gram.pckl")
+SVM_word_bigram_model, _ = load_models ("./app/static/models/SVM_model_word_2-gram.pckl")
+
+SVM_char_3gram_model, char_3gram_vectorizer = load_models ("./app/static/models/SVM_model_char_3-gram.pckl")
+SVM_char_5gram_model, char_5gram_vectorizer = load_models ("./app/static/models/SVM_model_char_5-gram.pckl")
 
 print ("All models loaded")
 
@@ -56,18 +59,29 @@ def detect():
     model = None
     vectorizer = None
 
-    if (classifier == "Word Unigram with Multinomial Naive Bayes"):
-        model = MNB_unigram_model
-        vectorizer = unigram_vectorizer
-    elif (classifier == "Word Bigram with Multinomial Naive Bayes"):
-        model = MNB_bigram_model
-        vectorizer = bigram_vectorizer
-    elif (classifier == "Word Bigram with Linear SVM"):
-        model = SVM_bigram_model
-        vectorizer = bigram_vectorizer
+    if (classifier == "Multinomial Naive Bayes (Word Unigram)"):
+        model = MNB_word_unigram_model
+        vectorizer = word_unigram_vectorizer
+    elif (classifier == "Multinomial Naive Bayes (Word Bigram)"):
+        model = MNB_word_bigram_model
+        vectorizer = word_bigram_vectorizer
+    elif (classifier == "Linear SVM (Word Unigram)"):
+        model = SVM_word_unigram_model
+        vectorizer = word_unigram_vectorizer
+    elif (classifier == "Linear SVM (Word Bigram)"):
+        model = SVM_word_bigram_model
+        vectorizer = word_bigram_vectorizer
+    elif (classifier == "Linear SVM (Char 3-gram)"):
+        model = SVM_char_3gram_model
+        vectorizer = char_3gram_vectorizer
     else:
-        model = SVM_unigram_model
-        vectorizer = unigram_vectorizer
+        model = SVM_char_5gram_model
+        vectorizer = char_5gram_vectorizer
+
+    print (classifier)
+    print (model)
+    print (vectorizer)
+
 
     # gets word n gram features and performs classification using
     # model chosen

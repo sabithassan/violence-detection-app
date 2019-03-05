@@ -21,7 +21,7 @@
     <div class = "s002">
       <h2> Please choose classifier and enter your text </h2>
       <div class = "line-break"></div>
-      <p1> Your entered text will be run with the classifier selected to detect level of violence in the text. If no classifier is selected, Word Unigram model with Linear SVM classifier will be used. The model only works for Arabic text. </p1>
+      <p1> Your entered text will be run with the classifier selected to detect level of violence in the text. If no classifier is selected, character 5-gram model with Linear SVM classifier will be used. The model only works for Arabic text. </p1>
     </div>
 
 
@@ -36,10 +36,13 @@
 
                 <select id="classifiername" data-trigger=""  name="choices-single-default">
                     <option placeholder="">Choose Classifier</option>
-                    <option>Word Unigram with Multinomial Naive Bayes</option>
-                    <option>Word Bigram with Multinomial Naive Bayes</option>
-                    <option>Word Unigram with Linear SVM</option>
-                    <option>Word Bigram with Linear SVM</option>
+                    <option>Multinomial Naive Bayes (Word Unigram)</option>
+                    <option>Multinomial Naive Bayes (Word Bigram)</option>
+                    <option>Linear SVM (Word Unigram)</option>
+                    <option>Linear SVM (Word Bigram)</option>
+                    <option>Linear SVM (Char 3-gram)</option>
+                    <option>Linear SVM (Char 5-gram)</option>
+
                 </select>
                     <script>
                       const choices = new Choices('[data-trigger]',
