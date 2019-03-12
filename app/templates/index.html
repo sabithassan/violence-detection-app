@@ -12,6 +12,7 @@
 
   </head>
   <body>
+      
     
     <div class = "s001">
       <h1> Welcome to Violence Detection <br/></h1>
@@ -19,12 +20,26 @@
     </div>
 
     <div class = "s002">
+      <h2> Customize your own classifier </h2>
+      <p1> You can customize the classifier with your own training file. The training file needs to be in the same format as the AlJazeera dataset presented in http://www.aclweb.org/anthology/W17-3008. If training file is not provided then pretrained classifiers will be used. Training classifiers will replace old classifiers. </p1>
+      <p></p>
+      <div class="input-group">
+
+          <input type="file" id="fileupload" name="file" >
+
+      </div>
+      <p></p>
+
+      <button class="btn-search" type="button" onclick="upload()"> Train Classifiers </button>
+      <input type="text" id="txtTest" name="txtTest" value="Pretrained classifier in use. Upload file to train your own classifier." size="100" readonly/>
+
+    </div>
+
+    <div class = "s002">
       <h2> Please choose classifier and enter your text </h2>
       <div class = "line-break"></div>
       <p1> Your entered text will be run with the classifier selected to detect level of violence in the text. If no classifier is selected, character 5-gram model with Linear SVM classifier will be used. The model only works for Arabic text. </p1>
     </div>
-
-
 
     <div class="s003">
 
@@ -85,8 +100,6 @@
     </div>
 
 
-
-    
-
-  </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+  </body>
+  <!-- This templates was made by Colorlib (https://colorlib.com)
 </html>

@@ -858,6 +858,8 @@ legend {
 }
 
 
+
+
 .s003 form {
   width: 100%;
   max-width: 1200px;
@@ -1088,4 +1090,15 @@ legend {
     padding: 5px;
     text-align: left;
 }
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+
 

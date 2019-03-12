@@ -1,4 +1,34 @@
 
+function upload(){
+
+  var data=new FormData();
+          var file = $("#fileupload")[0].files[0];
+          if (typeof file == "undefined"){
+            alert ("Please choose file.");
+            return;
+          }
+          data.append('file',file);
+          $("#txtTest").val("Classifier training in progress. Please wait.....");
+
+          $.ajax({
+              url:"/upload",
+              type:'POST',
+              data:data,
+              cache:false,
+              processData:false,
+              contentType:false,
+              error:function(){
+                  alert ("Upload error");
+                  console.log("upload error");
+              },
+              success:function(data){
+                  console.log(data);
+                  $("#txtTest").val("Classifier training complete. Your classifier will be used for violence detection.");
+              }
+          })
+}
+
+
 /**
 Gets input from user, makes call to server and updates DOM based on level of 
 offensivebess in text input by user as returned from server.
