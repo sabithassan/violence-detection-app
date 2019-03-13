@@ -16,8 +16,8 @@ from sklearn.naive_bayes import MultinomialNB
 
 
 def get_n_gram_feats (input, n, mode):
-    ''' returns word n-gram features for input. 
-    mode has to be "char" or "word" '''
+    ''' returns word n-gram features and vectorizer 
+    for input. mode has to be "char" or "word" '''
 
     tokenizer = tokenizer=lambda x:x.split(' ')
     vectorizer = TfidfVectorizer(lowercase=False, ngram_range= n, analyzer=mode,tokenizer = tokenizer)
