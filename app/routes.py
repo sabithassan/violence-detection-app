@@ -52,8 +52,8 @@ def train_all_classifiers (train_input, train_labels):
     word_unigram_features, word_unigram_vectorizer = get_n_gram_feats(train_input, (1,1), "word")
     word_bigram_features, word_bigram_vectorizer = get_n_gram_feats(train_input, (1,2), "word")
 
-    char_3gram_features, char_3gram_vectorizer = get_n_gram_feats(train_input, (1,3), "word")
-    char_5gram_feautres, char_5gram_vectorizer = get_n_gram_feats(train_input, (1,5), "word")
+    char_3gram_features, char_3gram_vectorizer = get_n_gram_feats(train_input, (1,3), "char")
+    char_5gram_feautres, char_5gram_vectorizer = get_n_gram_feats(train_input, (1,5), "char")
     
 
     ## trains classifiers. this can be changed to try different classifiers
