@@ -111,6 +111,7 @@ def load_model(model_file):
     ''' loads previously trained model'''
     with open(model_file, "rb") as f:
         model = pickled.load(f)
+        print (model)
     return model
 
 
