@@ -28,7 +28,7 @@ There are four vectorizers:
 1. Word unigram vectorizer
 2. Word bigram vectorizer
 3. Char 3-gram vectorizer
-4. Char 4-gram vectorizer
+4. Char 5-gram vectorizer
 
 These models were trained using portion of the AlJazeera data described in http://www.aclweb.org/anthology/W17-3008
 
